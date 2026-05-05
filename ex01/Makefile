@@ -6,7 +6,7 @@
 #    By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 14:02:02 by fmoulin           #+#    #+#              #
-#    Updated: 2026/05/04 18:44:37 by fmoulin          ###   ########.fr        #
+#    Updated: 2026/05/05 18:20:33 by fmoulin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #           CONFIG
 # ===========================
 
-NAME        = ScalarConverter
+NAME        = Serialization
 
 OBJ_DIR     = obj
 
@@ -26,7 +26,7 @@ RM          = rm -f
 #           SOURCES
 # ===========================
 
-SRCS =  main.cpp ScalarConverter.cpp
+SRCS =  main.cpp Serialization.cpp Data.cpp
 		
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 

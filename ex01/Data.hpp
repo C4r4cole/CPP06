@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 14:33:05 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/04 16:18:57 by fmoulin          ###   ########.fr       */
+/*   Created: 2026/05/05 18:23:26 by fmoulin           #+#    #+#             */
+/*   Updated: 2026/05/05 18:30:02 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+# ifndef DATA_HPP
+# define DATA_HPP
 
-# include <iostream>
-# include <string>
-# include <cstdlib>
-# include <cstring>
-# include <limits>
-# include <cmath>
-# include <cctype>
-
-class ScalarConverter
+class Data
 {
 	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter &copy);
-		ScalarConverter &operator = (const ScalarConverter &src);
-		~ScalarConverter();
+		int	pace;
+		int heart_rate;
+		int	ppm;
 	public:
-		static void	convert(std::string const &src);
+		Data();
+		Data(const Data &copy);
+		Data &operator = (const Data &src);
+		~Data();
 };
 
-# endif
+#endif
