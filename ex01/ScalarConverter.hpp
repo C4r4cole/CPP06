@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:33:05 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/05 16:19:27 by fmoulin          ###   ########.fr       */
+/*   Updated: 2026/05/04 16:18:57 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <string>
 # include <cstdlib>
 # include <cstring>
-# include <limits.h>
+# include <limits>
 # include <cmath>
 # include <cctype>
 

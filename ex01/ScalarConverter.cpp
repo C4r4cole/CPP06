@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:33:08 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/05 17:05:26 by fmoulin          ###   ########.fr       */
+/*   Updated: 2026/05/04 18:56:22 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ static bool isPseudoLiteral(std::string const &src)
 static bool	isChar(std::string const &src)
 {
 	return (src.length() == 3 && src[0] == '\'' && src[2] == '\'');
+}
+
+static bool hasF(std::string const &src)
+{
+	return (src.length() > 0 && src[src.length() - 1] == 'f');
 }
 
 static bool isIntLiteral(std::string const &src)
@@ -143,116 +148,64 @@ static bool isFloatLiteral(std::string const &src)
 
 static void	displayPseudoLiteral(std::string const &src)
 {
-	if (src == "nan" || src == "nanf")
+	if (hasF(src))
 	{
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
-		std::cout << "float: " << "nanf" << std::endl;
-		std::cout << "double: " << "nan" << std::endl;
+		std::cout << "float: " << src << std::endl;
+		std::cout << "double: " << strtod(src.c_str(), NULL) << std::endl;
 	}
-	
-	if (src == "+inf" || src == "+inff")
+	else
 	{
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
-		std::cout << "float: " << "+inff" << std::endl;
-		std::cout << "double: " << "+inf" << std::endl;
-	}
-	
-	if (src == "-inf" || src == "-inff")
-	{
-		std::cout << "char: " << "impossible" << std::endl;
-		std::cout << "int: " << "impossible" << std::endl;
-		std::cout << "float: " << "-inff" << std::endl;
-		std::cout << "double: " << "-inf" << std::endl;
+		std::cout << "float: " << src << "f" << std::endl;
+		std::cout << "double: " << src << std::endl;
 	}
 }
 
-static void	displayChar(double value)
+static void	displayChar(std::string const &src)
 {
-	if (std::isnan(value) || std::isinf(value))
-	{
-		std::cout << "char: impossible" << std::endl;
-		return ;
-	}
+	char c = src[1];
+	double	result = static_cast<double>(c);
 	
-	if (value < 0 || value > 127)
-	{
-		std::cout << "char: impossible" << std::endl;
-		return ;
-	}
-	
-	char c = static_cast<char>(value);
+	std::cout << "char: " << src << std::endl;
+	std::cout << "int: " << static_cast<int>(result) << std::endl;
+	std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
+}
 
-	if (!isprint(c))
-		std::cout << "char: not diplayable" << std::endl;
+static void	displayFloat(std::string const &src)
+{
+	double	result = strtod(src.c_str(), NULL);
+	
+	std::cout << "char: " << "impossible" << std::endl;
+	std::cout << "int: " << static_cast<int>(result) << std::endl;
+	std::cout << "float: " << src << std::endl;
+	std::cout << "double: " << static_cast<double>(result) << std::endl;
+}
+
+static void	displayDouble(std::string const &src)
+{
+	double	result = strtod(src.c_str(), NULL);
+	
+	std::cout << "char: " << static_cast<char>(result) << std::endl;
+	std::cout << "int: " << static_cast<int>(result) << std::endl;
+	if (result == static_cast<int>(result))
+		std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
 	else
-		std::cout << "char: '" << c << "'" << std::endl;
+		std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+	std::cout << "double: " << src << std::endl;
 }
 
-static void	displayFloat(double value)
+static void	displayInt(std::string const &src)
 {
-	float	f = static_cast<float>(value);
-
-	if (std::isnan(value))
-	{
-		std::cout << "float: nanf" << std::endl;
-		return ;
-	}
+	double	result = strtod(src.c_str(), NULL);
 	
-	if (std::isinf(value))
-	{
-		if (value > 0)
-			std::cout << "float: +inff" << std::endl;
-		else
-			std::cout << "float: -inff" << std::endl;
-		return ;
-	}
-	
-	if (value == static_cast<long>(value))
-		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-	else
-		std::cout << "float: " << f << "f" << std::endl;
-}
-
-static void	displayDouble(double value)
-{
-	if (std::isnan(value))
-	{
-		std::cout << "double: nan" << std::endl;
-		return ;
-	}
-
-	if (std::isinf(value))
-	{
-		if (value > 0)
-			std::cout << "double: +inf" << std::endl;
-		else
-			std::cout << "double: -inf" << std::endl;
-		return ;
-	}
-	
-	if (value == static_cast<long>(value))
-		std::cout << "double: " << std::fixed << std::setprecision(1) << value << std::endl;
-	else
-		std::cout << "double: " << value << std::endl;
-}
-
-static void	displayInt(double value)
-{
-	if (std::isnan(value) || std::isinf(value))
-	{
-		std::cout << "int: impossible" << std::endl;
-		return ;
-	}
-	
-	if (value < INT_MIN || value > INT_MAX)
-	{
-		std::cout << "int: impossible" << std::endl;
-		return ;
-	}
-
-	std::cout << "int: " << static_cast<int>(value) << std::endl;
+	std::cout << "char: " << static_cast<char>(result) << std::endl;
+	std::cout << "int: " << src << std::endl;
+	std::cout << "float: " << static_cast<float>(result) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(result) << ".0" << std::endl;
 }
 
 static void	displayInvalid(void)
@@ -261,14 +214,6 @@ static void	displayInvalid(void)
 	std::cout << "int: " << "impossible" << std::endl;
 	std::cout << "float: " << "impossible" << std::endl;
 	std::cout << "double: " << "impossible" << std::endl;
-}
-
-static void displayAll(double value)
-{
-	displayChar(value);
-	displayInt(value);
-	displayFloat(value);
-	displayDouble(value);
 }
 
 void ScalarConverter::convert(std::string const &src)
@@ -280,27 +225,22 @@ void ScalarConverter::convert(std::string const &src)
 	}
 	else if (isChar(src))
 	{
-		double value = src[1];
-		displayAll(value);
+		displayChar(src);
 		return ;
 	}
 	else if (isFloatLiteral(src))
 	{
-		std::string noF = src.substr(0, src.length() - 1);
-		double value = strtod(noF.c_str(), NULL);
-		displayAll(value);
+		displayFloat(src);
 		return ;
 	}
 	else if (isDoubleLiteral(src))
 	{
-		double	value = strtod(src.c_str(), NULL);
-		displayAll(value);
+		displayDouble(src);
 		return ;
 	}
 	else if (isIntLiteral(src))
 	{
-		double	value = strtod(src.c_str(), NULL);
-		displayAll(value);
+		displayInt(src);
 		return ;
 	}
 	else
