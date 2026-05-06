@@ -6,7 +6,7 @@
 #    By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 14:02:02 by fmoulin           #+#    #+#              #
-#    Updated: 2026/05/06 14:34:19 by fmoulin          ###   ########.fr        #
+#    Updated: 2026/05/06 17:23:26 by fmoulin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #           CONFIG
 # ===========================
 
-NAME        = Serialization
+NAME        = Identify
 
 OBJ_DIR     = obj
 
@@ -26,7 +26,7 @@ RM          = rm -f
 #           SOURCES
 # ===========================
 
-SRCS =  main.cpp Serializer.cpp Data.cpp
+SRCS =  main.cpp Base.cpp A.cpp B.cpp C.cpp
 		
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 

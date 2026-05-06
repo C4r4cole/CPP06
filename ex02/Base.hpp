@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 18:23:26 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/06 13:08:27 by fmoulin          ###   ########.fr       */
+/*   Created: 2026/05/06 14:49:08 by fmoulin           #+#    #+#             */
+/*   Updated: 2026/05/06 16:26:45 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef DATA_HPP
-# define DATA_HPP
+# ifndef BASE_HPP
+# define BASE_HPP
 
-# include <iostream>
-# include <stdint.h>
+#include <iostream>
+#include <stdint.h>
+#include <cstdlib>
+#include <ctime>
+#include <stdexcept>
 
-class Data
+class Base
 {
-	private:
-		std::string	_name;
-		int			_pace;
-	public:
-		Data();
-		Data(std::string name);
-		Data(const Data &copy);
-		Data &operator = (const Data &src);
-		~Data();
+public:
+	virtual ~Base();
 };
+
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);
 
 #endif

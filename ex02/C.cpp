@@ -1,25 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   C.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 14:32:59 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/06 17:42:25 by fmoulin          ###   ########.fr       */
+/*   Created: 2026/05/06 14:49:11 by fmoulin           #+#    #+#             */
+/*   Updated: 2026/05/06 15:22:53 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "C.hpp"
 
-int	main()
-{
-	srand(time(NULL));
-	Base *one = generate();
-	
-	identify(one);
-	identify(*one);
-	
-	delete one;
-	return (0);
-}

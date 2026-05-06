@@ -1,44 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 18:23:21 by fmoulin           #+#    #+#             */
-/*   Updated: 2026/05/06 13:08:12 by fmoulin          ###   ########.fr       */
+/*   Created: 2026/05/06 14:49:25 by fmoulin           #+#    #+#             */
+/*   Updated: 2026/05/06 15:23:17 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Data.hpp"
+#ifndef A_HPP
+#define A_HPP
 
-Data::Data()
-{
-	
-}
+#include "Base.hpp"
 
-Data::Data(std::string name) : _name(name), _pace(0)
-{
-	
-}
+class A : public Base {};
 
-Data::Data(const Data &copy)
-{
-	*this = copy;
-}
-
-
-Data &Data::operator = (const Data &src)
-{
-	if (this != &src)
-	{
-		this->_name = src._name;
-		this->_pace = src._pace;	
-	}
-	return (*this);
-}
-
-Data::~Data()
-{
-	
-}
+#endif
